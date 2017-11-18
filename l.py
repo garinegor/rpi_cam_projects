@@ -5,6 +5,7 @@ from telebot import types
 
 camera = PiCamera()
 camera.vflip = True
+camera.hflip = True
 bot = telebot.TeleBot(config.token)
 users=[202226598]
 
@@ -16,7 +17,6 @@ def send_photo(message):
         camera.capture('./image.jpg')
         camera.stop_preview()
         bot.send_photo(chat_id=message.chat.id, photo=open('./image.jpg', 'rb'))
-
 @bot.message_handler(commands=["start"])
 def start(message):
     bot.send_message(message.chat.id, "чтобы получить фото с домофона, нажми /photo")
