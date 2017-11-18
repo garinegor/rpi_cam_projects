@@ -7,7 +7,7 @@ camera = PiCamera()
 camera.vflip = True
 camera.hflip = True
 bot = telebot.TeleBot(config.token)
-users=[202226598]
+users=[202226598, 56345999]
 
 @bot.message_handler(commands=["photo"])
 def send_photo(message):
