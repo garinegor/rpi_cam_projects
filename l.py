@@ -9,7 +9,7 @@ bot = telebot.TeleBot(config.token)
 @bot.message_handler(commands=["photo"])
 def send_photo(message):
     camera.start_preview()
-    time.sleep(2)
+    sleep(2)
     camera.capture('./image.jpg')
     camera.stop_preview()
     bot.send_message(chat_id=chat_id,
