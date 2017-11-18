@@ -1,16 +1,17 @@
 from picamera import PiCamera
 from time import sleep
- 
+import config,telebot,json
+from telebot import types
+
 camera = PiCamera()
- 
-# Запускаем предпросмотр сигнала с камеры на экране поверх всех окон
-camera.start_preview()
- 
-# Даём камере три секунды на автофокусировку и установку баланса белого
-sleep(30)
- 
-# Делаем снимок и сохраняем его на рабочий стол с именем image.jpg
-camera.capture('/home/pi/Desktop/image.jpg')
- 
-# Выключаем режим предпросмотра
-camera.stop_preview()
+bot = telebot.TeleBot(config.token)
+
+@bot.message_handler(commands=["photo"])
+def send_photo(message):
+    camera.start_preview()
+    time.sleep(2)
+    camera.capture('./image.jpg')
+    camera.stop_preview()
+    bot.send_message(chat_id=chat_id,
+                     text='<b>bold</b> <i>italic</i> Отправляю.', 
+                     parse_mode=telegram.ParseMode.HTML)
