@@ -17,5 +17,9 @@ def send_photo(message):
         camera.stop_preview()
         bot.send_photo(chat_id=message.chat.id, photo=open('./image.jpg', 'rb'))
 
+@bot.message_handler(commands=["start"])
+def start(message):
+    bot.send_message(message.chat.id, "чтобы получить фото с домофона, нажми /photo")
+
 if __name__ == '__main__':
     bot.polling(none_stop=True)
