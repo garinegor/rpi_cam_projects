@@ -4,15 +4,18 @@ import config,telebot,json
 from telebot import types
 
 camera = PiCamera()
+camera.vflip = True
 bot = telebot.TeleBot(config.token)
+users=[202226598]
 
 @bot.message_handler(commands=["photo"])
 def send_photo(message):
-    camera.start_preview()
-    sleep(2)
-    camera.capture('./image.jpg')
-    camera.stop_preview()
-    bot.send_photo(chat_id=message.chat.id, photo=open('./image.jpg', 'rb'))
+    if message.chat.id in users:
+        camera.start_preview()
+        sleep(2)
+        camera.capture('./image.jpg')
+        camera.stop_preview()
+        bot.send_photo(chat_id=message.chat.id, photo=open('./image.jpg', 'rb'))
 
 if __name__ == '__main__':
     bot.polling(none_stop=True)
