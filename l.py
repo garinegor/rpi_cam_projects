@@ -12,9 +12,6 @@ def send_photo(message):
     sleep(2)
     camera.capture('./image.jpg')
     camera.stop_preview()
-    bot.send_message(chat_id=message.chat.id,
-                     text='<b>bold</b> <i>italic</i> Отправляю.',
-                     parse_mode=telegram.ParseMode.HTML)
     bot.send_photo(chat_id=message.chat.id, photo=open('./image.jpg', 'rb'))
 
 if __name__ == '__main__':
