@@ -21,6 +21,10 @@ def send_photo(message):
 def start(message):
     bot.send_message(message.chat.id, "чтобы получить фото с домофона, нажми /photo")
     print(message.chat.id)
+n=12
+while n>0:
+    print(n)
+    n-=1
 
 if __name__ == '__main__':
     bot.polling(none_stop=True)
