@@ -12,10 +12,12 @@ camera = PiCamera()
 camera.vflip = True
 camera.hflip = True
 pygame.init()
+my_sound = pygame.mixer.Sound('./foo.wav')
 
 while True:
     input_state = GPIO.input(21)
     if input_state == False:
+        my_sound.play()
         bot.send_message(202226598, "кто-то пришел")
         camera.start_preview()
         sleep(2)
