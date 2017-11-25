@@ -13,7 +13,7 @@ users=[202226598, 56345999]
 def send_photo(message):
     if message.chat.id in users:
         camera.start_preview()
-        sleep(2)
+        sleep(5)
         camera.capture('./image.jpg')
         camera.stop_preview()
         bot.send_photo(chat_id=message.chat.id, photo=open('./image.jpg', 'rb'))
