@@ -8,6 +8,9 @@ bot = telebot.TeleBot(config.token)
 users=[202226598, 56345999]
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(21, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+camera = PiCamera()
+camera.vflip = True
+camera.hflip = True
 
 while True:
     input_state = GPIO.input(21)
