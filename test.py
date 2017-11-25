@@ -12,7 +12,7 @@ while True:
     input_state = GPIO.input(21)
     if input_state == False:
         bot.send_message(202226598, "кто-то пришел")
-        time.sleep(0.2)
+        sleep(0.2)
 
 if __name__ == '__main__':
     bot.polling(none_stop=True)
