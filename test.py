@@ -1,5 +1,5 @@
 from time import sleep
-import config,telebot,json,os
+import config,telebot,json,os,pygame
 from telebot import types
 import RPi.GPIO as GPIO
 from picamera import PiCamera
@@ -11,6 +11,7 @@ GPIO.setup(21, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 camera = PiCamera()
 camera.vflip = True
 camera.hflip = True
+pygame.init()
 
 while True:
     input_state = GPIO.input(21)
